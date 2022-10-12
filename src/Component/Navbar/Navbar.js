@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Link from '../Link/Link';
+import Link from '../PLink/PLink';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
 
 const Navbar = () => {
@@ -11,20 +11,25 @@ const Navbar = () => {
     ]
     return (
 
-        < nav className='bg-purple-200 h-10' >
+        < nav className='bg-purple-200 h-16' >
 
-            <div onClick={() => setOpen(!open)} className="h-10 w-10 text-black m-4 md:hidden" >
+            <div onClick={() => setOpen(!open)} className="h-10 w-10 text-black m-0 md:hidden" >
                 {
                     open ? <XMarkIcon /> : <Bars3Icon />
                 }
             </div>
-            <ul className={`bg-purple-200 md:flex w-full justify-end md:static absolute duration-500 ease-in ${open ? 'top-12' : 'top-[-120px]'}`}>
+            <div>
 
-                {
-                    routes.map(route => <Link key={route.id} route={route}></Link>)
+                <ul className={`bg-purple-200 md:flex w-full justify-end items-center py-4 md:static absolute duration-500 ease-in ${open ? 'top-12' : 'top-[-120px]'}`}>
 
-                }
-            </ul>
+                    {
+                        routes.map(route => <Link key={route.id} route={route}></Link>)
+
+                    }
+                </ul>
+            </div>
+
+
 
         </nav >
 

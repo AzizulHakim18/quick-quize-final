@@ -1,12 +1,56 @@
 import logo from './logo.svg';
 import './App.css';
-import Navbar from './Component/Navbar/Navbar';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
+import Statistics from './Component/Statistics/Statistics';
+import Blog from './Component/Blog/Blog';
+import Main from './Layout/Main';
+import { useState } from 'react';
+import Quiz from './Component/Quiz/Quiz';
 
 function App() {
+  const [open, setOpen] = useState(false)
+
+  const router = createBrowserRouter([
+
+    {
+      path: '/', element: <Main></Main>, children: [
+
+        { path: '/', element: <Quiz></Quiz> },
+        {
+          path: '/quiz',
+          loader: async () => {
+            return fetch('https://openapi.programming-hero.com/api/quiz');
+          },
+          element: <Quiz></Quiz>
+        },
+
+        // {
+        //   path: '/home',
+        //   loader: async () => {
+        //     return fetch('https://openapi.programming-hero.com/api/quiz');
+        //   }
+        //   element: 
+        // },
+        { path: '/statistics', element: <Statistics></Statistics> },
+        { path: '/blog', element: <Blog></Blog> }
+      ]
+    },
+    { path: '*', element: <div><span className='text-7xl text-bold'>404</span>   This route not found</div> }
+  ])
   return (
     <div className="App">
-      <Navbar></Navbar>
-      <h1>hello why u can not show the code</h1>
+      <div onClick={() => setOpen(!open)} className="h-10 w-10 text-black m-0 md:hidden" >
+        {
+          open ? <XMarkIcon /> : <Bars3Icon />
+        }
+      </div>
+      <div> <RouterProvider router={router}></RouterProvider></div>
     </div>
   );
 }
