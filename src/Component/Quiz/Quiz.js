@@ -8,15 +8,16 @@ const Quiz = () => {
     const elements = items.data;
     return (
         <div>
-            <h1>this is the quiz section {items.data.length}</h1>
+            <h1>this is the quiz section {elements.length}</h1>
 
-            <div className='flex justify-center items-center mx-6 px-6'> {
-                elements.map(element => <Element
-                    key={element.id}
-                    element={element}
+            <div className='flex justify-center items-center mx-6 px-6'>
+                {
+                    elements.map(element => <Element
+                        key={element.id}
+                        element={element}
 
-                ></Element>)
-            }</div>
+                    ></Element>)
+                }</div>
         </div>
     );
 };
