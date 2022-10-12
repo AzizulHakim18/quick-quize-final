@@ -12,6 +12,7 @@ import Blog from './Component/Blog/Blog';
 import Main from './Layout/Main';
 import { useState } from 'react';
 import Quiz from './Component/Quiz/Quiz';
+import QuizStart from './Component/QuizStart/QuizStart';
 
 function App() {
   const [open, setOpen] = useState(false)
@@ -29,14 +30,14 @@ function App() {
           },
           element: <Quiz></Quiz>
         },
-
-        // {
-        //   path: '/home',
-        //   loader: async () => {
-        //     return fetch('https://openapi.programming-hero.com/api/quiz');
-        //   }
-        //   element: 
-        // },
+        {
+          path: '/quiz/:elementId',
+          loader: async ({ params }) => {
+            console.log(params.elementId)
+            return fetch(`https://openapi.programming-hero.com/api/quiz/${params.elementId}`);
+          },
+          element: <QuizStart></QuizStart>
+        },
         { path: '/statistics', element: <Statistics></Statistics> },
         { path: '/blog', element: <Blog></Blog> }
       ]
