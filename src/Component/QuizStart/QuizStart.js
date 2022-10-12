@@ -1,8 +1,10 @@
 import React from 'react';
-import { useRouteLoaderData } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 
 const QuizStart = () => {
-    const quiz = useRouteLoaderData();
+    // const quiz = useRouteLoaderData();
+    // console.log(quiz);
+    const quiz = useLoaderData();
     console.log(quiz);
     return (
         <div>
