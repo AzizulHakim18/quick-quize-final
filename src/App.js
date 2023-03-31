@@ -22,7 +22,11 @@ function App() {
     {
       path: '/', element: <Main></Main>, children: [
 
-        { path: '/', element: <Quiz></Quiz> },
+        {
+          path: '/', loader: async () => {
+            return fetch('https://openapi.programming-hero.com/api/quiz');
+          }, element: <Quiz></Quiz>
+        },
         {
           path: '/quiz',
           loader: async () => {

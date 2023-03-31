@@ -5,9 +5,9 @@ import Element from '../Element/Element';
 const Quiz = () => {
 
     const items = useLoaderData();
-    // // console.log(items)
+
     const elements = items.data;
-    // console.log(elements)
+
     return (
         <div>
             <h1 className='text-9xl font-extrabold text-red-500'>QUICK QUIZE </h1>
