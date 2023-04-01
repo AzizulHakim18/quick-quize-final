@@ -5,13 +5,21 @@ const Element = ({ element }) => {
     const { id, name, logo, total } = element;
     return (
         <div >
-            <div className='m-4 p-4 bg-slate-200 border rounded border-teal-500'>
-                <img src={logo} alt="" />
-                <div className='flex justify-between items-center'>
-                    <h1 className='text-xl font-bold text-red-500'> {name}</h1>
-                    <Link to={`/quiz/${id}`} className='m-2 p-4 text-white text-xl font-bold bg-cyan-500 border rounded '>Get Start</Link>
+            <div className="card bg-slate-200 shadow-xl">
+                <figure className="px-10 pt-10">
+                    <img src={logo} alt="" className="rounded-xl" />
+                </figure>
+                <div className="card-body items-center text-center">
+                    <h2 className="card-title">{name}</h2>
+                    <p>Totall quiz {total}</p>
+                    <div className="card-actions">
+                        <button className="btn btn-outline btn-info"><Link to={`/quiz/${id}`}>Get Start</Link></button>
+
+                    </div>
                 </div>
             </div>
+
+
         </div>
     );
 };

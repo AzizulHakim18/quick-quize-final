@@ -7,12 +7,12 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import Statistics from './Component/Statistics/Statistics';
 import Blog from './Component/Blog/Blog';
 import Main from './Layout/Main';
 import { useState } from 'react';
 import Quiz from './Component/Quiz/Quiz';
 import QuizStart from './Component/QuizStart/QuizStart';
+import Home from './Component/Home';
 
 function App() {
   const [open, setOpen] = useState(false)
@@ -25,7 +25,7 @@ function App() {
         {
           path: '/', loader: async () => {
             return fetch('https://openapi.programming-hero.com/api/quiz');
-          }, element: <Quiz></Quiz>
+          }, element: <Home></Home>
         },
         {
           path: '/quiz',
@@ -42,19 +42,14 @@ function App() {
           },
           element: <QuizStart></QuizStart>
         },
-        { path: '/statistics', element: <Statistics></Statistics> },
         { path: '/blog', element: <Blog></Blog> }
       ]
     },
     { path: '*', element: <div><span className='text-7xl text-bold'>404</span>   This route not found</div> }
   ])
   return (
-    <div className="App">
-      <div onClick={() => setOpen(!open)} className="h-10 w-10 text-black m-0 md:hidden" >
-        {
-          open ? <XMarkIcon /> : <Bars3Icon />
-        }
-      </div>
+    <div >
+
       <div> <RouterProvider router={router}></RouterProvider></div>
     </div>
   );
