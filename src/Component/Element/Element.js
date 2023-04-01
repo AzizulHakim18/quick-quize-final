@@ -13,7 +13,7 @@ const Element = ({ element }) => {
                     <h2 className="card-title">{name}</h2>
                     <p>Totall quiz {total}</p>
                     <div className="card-actions">
-                        <button className="btn btn-outline btn-info"><Link to={`/quiz/${id}`}>Get Start</Link></button>
+                        <Link to={`/quiz/${id}`} className="btn btn-outline btn-info">Get Start</Link>
 
                     </div>
                 </div>

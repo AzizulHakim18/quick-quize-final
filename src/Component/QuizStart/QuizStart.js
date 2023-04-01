@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../Context/UserContext';
 
 
 const QuizStart = () => {
+
+    const { user } = useContext(AuthContext);
+    const name = user?.displayName;
 
     const quiz = useLoaderData();
     console.log(quiz.data.questions);
@@ -104,7 +108,7 @@ const QuizStart = () => {
 
             ) : (
                 <div className='lg:w-3/4 sm:w-full mx-auto bg-teal-400 p-10 border rounded-lg shadow-lg shadow-cyan-500/50'>
-                    <h3 className='font-family text-xl font-bold text-center text-rose-500'>Result</h3>
+                    <h3 className='font-family text-xl font-bold text-center text-rose-500'>Dear {name} Your Result</h3>
                     <p className='text-2xl font-bold '>
                         Total Question: <span>{questions.length}</span>
                     </p>
